@@ -6,19 +6,28 @@ def clear_terminal():
 clear_terminal()
 
 while True:
-    print("Veuillez entrer le type de clé que vous souhaitez utiliser : ")
+    print("Quelle type de clé souhaitez vous utiliser ? : ")
     key_type = input()
 
     if key_type not in ['rsa', 'dsa', 'ecdsa']:
         print("Type de clé non valide. Veuillez entrer 'rsa', 'dsa' ou 'ecdsa'.")
     else:
         break
+    
+print(f"Vous avez choisi le type de clé {key_type}")
 
-print(f"Vous avez choisi le type de clé : {key_type}")
+while True:
+    print("En combien de bit voulez vous encoder votre clé ? : ")
+    key_size = input()
 
-print("Veuillez entrer en chiffre en combien de bit vous souhaitez encoder votre clef : ")
-key_size = input()
-print("Veuillez entrer le nom que vous souhaitez donner à votre clef : ")
+    if key_size not in ['64', '128', '256', '512', '1024', '2048', '4096']:
+        print("Encodage non valide. Veuillez entrer '64', '128', '256', '512', '1024', '2048', '4096'.")
+    else:
+        break
+
+print(f"Vous avez encoder votre clé en {key_size} bit")
+
+print("Comment souhaitez vous appeller votre clé ? : ")
 key_name = input()
 
 print("Voici la ligne de commande à utiliser :")
