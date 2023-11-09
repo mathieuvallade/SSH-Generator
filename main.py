@@ -5,9 +5,6 @@ def clear_terminal():
 
 clear_terminal()
 
-print("Veuillez entrer le type de clef que vous souhaitez utiliser : ")
-key_type = input()
-
 while True:
     print("Veuillez entrer le type de clé que vous souhaitez utiliser : ")
     key_type = input()
