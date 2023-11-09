@@ -4,8 +4,9 @@ key_type = None
 key_size = None
 key_name = None
 
-correct_key_type = ['rsa', 'dsa', 'ecdsa']
-correct_key_size = ['64', '128', '256', '512', '1024', '2048', '4096']
+rules_key_type = ['rsa', 'dsa', 'ecdsa']
+rules_key_size = ['64', '128', '256', '512', '1024', '2048', '4096']
+rules_key_name = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '=', '+', '[', ']', '{', '}', ';', ':', '"', ',', '<', '.', '>', '/', '?', '\'', ']', ' ']
 
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -29,34 +30,58 @@ def check_key_type():
     while True:
         key_type = get_key_type()
         
-        if key_type not in correct_key_type:
+        if key_type not in rules_key_type:
             print("Type de clé non valide. Veuillez entrer 'rsa', 'dsa' ou 'ecdsa'.")
             
         else:
             break
     clear_terminal()
     print(f"Vous avez choisi le type de clé '{key_type}'")
+    return key_type
 
 def check_key_size():
     while True:
         key_size = get_key_size()
         
-        if key_size not in correct_key_size:
+        if key_size not in rules_key_size:
             print("Encodage non valide. Veuillez entrer '64', '128', '256', '512', '1024', '2048', '4096'.")
             
         else:
             break
     clear_terminal()
     print(f"Vous avez encoder votre clé en {key_size} bit")
+    return key_size
+
+def check_key_name():
+    key_name_valid = False
     
+    while(key_name_valid is False):
+        key_name_valid = True
+        key_name = get_key_name()
+        
+        for character in rules_key_name:
+            
+            for letter in key_name:
+                
+                if letter is character:
+                    key_name_valid = False
+                    break
+                
+        if key_name_valid is True:
+            print(f"Vous avez nommé votre clé : {key_name}")
+            return key_name
+        
+        else:
+            print("Nom invalide, eviter les caractères spéciaux tel que : '!', '@', '#', etc")
+             
 def print_key():
+    key_type = check_key_type()
+    key_size = check_key_size()
+    key_name = check_key_name()
     print("Voici la ligne de commande à utiliser :")
     print(f"ssh-keygen -t {key_type} -b {key_size} -f /home/freezorce/.ssh/{key_name}")
 
-clear_terminal()
-check_key_type()
-check_key_size()
-key_name = get_key_name()
-print(key_name)
-clear_terminal()
-print_key()
+
+if __name__ == "__main__":
+    clear_terminal()
+    print_key()
