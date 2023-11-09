@@ -2,6 +2,7 @@ import os
 
 key_type = None
 key_size = None
+key_file = None
 key_name = None
 
 rules_key_type = ['rsa', 'dsa', 'ecdsa']
@@ -20,6 +21,11 @@ def get_key_size():
     print("En combien de bit voulez vous encoder votre clé ? : ")
     key_size = input()
     return key_size
+
+def get_key_file():
+    print("Veuillez entrer votre nom d'utilisateur : ")
+    key_file = input()
+    return key_file
     
 def get_key_name():
     print("Comment souhaitez vous appeller votre clé ? : ")
@@ -52,6 +58,20 @@ def check_key_size():
     print(f"Vous avez encoder votre clé en {key_size} bit")
     return key_size
 
+def check_key_file():
+    while True:
+        key_file = get_key_file()
+        print("Veuillez confirmer votre nom d'utilisateur : ")
+        key_file_valid = input()
+        
+        if key_file != key_file_valid:
+            print("Les noms d'utilisateur ne correspondent pas. Veuillez réessayer.")
+            
+        else:
+            print(f"Votre nom d'utilisateur est {key_file}")
+            return key_file
+            break
+
 def check_key_name():
     key_name_valid = False
     
@@ -68,6 +88,7 @@ def check_key_name():
                     break
                 
         if key_name_valid is True:
+            clear_terminal()
             print(f"Vous avez nommé votre clé : {key_name}")
             return key_name
         
@@ -77,9 +98,10 @@ def check_key_name():
 def print_key():
     key_type = check_key_type()
     key_size = check_key_size()
+    key_file = check_key_file()
     key_name = check_key_name()
     print("Voici la ligne de commande à utiliser :")
-    print(f"ssh-keygen -t {key_type} -b {key_size} -f /home/freezorce/.ssh/{key_name}")
+    print(f"ssh-keygen -t {key_type} -b {key_size} -f /home/{key_file}/.ssh/{key_name}")
 
 
 if __name__ == "__main__":
