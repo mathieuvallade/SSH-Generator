@@ -1,6 +1,5 @@
 from constant import rules_key_type, rules_key_size, rules_key_name
 import os
-
 key_type = None
 key_size = None
 key_file = None
@@ -47,7 +46,7 @@ def check_key_size():
         key_size = get_key_size()
         
         if key_size not in rules_key_size:
-            print("Encodage non valide. Veuillez entrer '64', '128', '256', '512', '1024', '2048', '4096'.")
+            print("Encodage non valide. Veuillez entrer '1024', '2048', '4096'.")
             
         else:
             break
