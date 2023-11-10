@@ -86,7 +86,9 @@ def generate_print_key():
     
     os.chdir(key_directory)
     clear_terminal()
-    public_key = open(key_name, "r")
+    print(f"Voici votre clé publique : {key_name}.pub\n")
+    public_key = open(f"{key_name}.pub", "r")
     print(public_key.read())
     public_key.close()
+    print("Terminé")
     
