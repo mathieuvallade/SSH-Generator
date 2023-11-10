@@ -37,10 +37,9 @@ def check_key_type():
             print("Type de clé non valide. Veuillez entrer 'rsa', 'dsa' ou 'ecdsa'.")
             
         else:
-            break
-    clear_terminal()
-    print(f"Vous avez choisi le type de clé '{key_type}'")
-    return key_type
+            clear_terminal()
+            print(f"Vous avez choisi le type de clé '{key_type}'")
+            return key_type
 
 def check_key_size():
     while True:
@@ -50,10 +49,9 @@ def check_key_size():
             print("Encodage non valide. Veuillez entrer '1024', '2048', '4096'.")
             
         else:
-            break
-    clear_terminal()
-    print(f"Vous avez encoder votre clé en {key_size} bit")
-    return key_size
+            clear_terminal()
+            print(f"Vous avez encoder votre clé en {key_size} bit")
+            return key_size
 
 def check_key_file():
     while True:
@@ -67,7 +65,6 @@ def check_key_file():
         else:
             print(f"Votre nom d'utilisateur est {key_file}")
             return key_file
-            break
 
 def check_key_name():
     key_name_valid = False
