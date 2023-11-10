@@ -1,4 +1,4 @@
-from constant import rules_key_type, rules_key_size, rules_key_name
+from constant import RULES_KEY_TYPE, RULES_KEY_SIZE, RULES_KEY_NAME
 from function import get_key_type, get_key_size, get_key_file, get_key_name, check_key_type, check_key_size, check_key_file, check_key_name, print_key, clear_terminal
 import os
 

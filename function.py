@@ -1,5 +1,6 @@
-from constant import rules_key_type, rules_key_size, rules_key_name
+from constant import RULES_KEY_TYPE, RULES_KEY_SIZE, RULES_KEY_NAME
 import os
+
 key_type = None
 key_size = None
 key_file = None
@@ -32,7 +33,7 @@ def check_key_type():
     while True:
         key_type = get_key_type()
         
-        if key_type not in rules_key_type:
+        if key_type not in RULES_KEY_TYPE:
             print("Type de clé non valide. Veuillez entrer 'rsa', 'dsa' ou 'ecdsa'.")
             
         else:
@@ -45,7 +46,7 @@ def check_key_size():
     while True:
         key_size = get_key_size()
         
-        if key_size not in rules_key_size:
+        if key_size not in RULES_KEY_SIZE:
             print("Encodage non valide. Veuillez entrer '1024', '2048', '4096'.")
             
         else:
@@ -75,7 +76,7 @@ def check_key_name():
         key_name_valid = True
         key_name = get_key_name()
         
-        for character in rules_key_name:
+        for character in RULES_KEY_NAME:
             
             for letter in key_name:
                 
