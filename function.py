@@ -84,8 +84,8 @@ def generate_key():
         os.chdir(key_directory)
 
 def print_key():
-    clear_terminal()
     generate_key()
+    clear_terminal()
     print(f"Voici votre clé SSH publique :\n")
     with open(f"{key_name}.pub", "r") as public_key:
         print(public_key.read())
