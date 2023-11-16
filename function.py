@@ -89,6 +89,7 @@ def get_key_name():
 
 def get_key_parameter():
     if gen_mod == 'rapide':
+        print("La clef utilisé par défaut est une clé eddsa")
         get_key_name()
         get_key_directory()
         
