@@ -3,5 +3,6 @@ import os
 
 if __name__ == "__main__":  
     clear_terminal()
+    get_gen_mod()
     get_key_parameter()
-    print_key()
+    print_key() 

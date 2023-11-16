@@ -1,28 +1,47 @@
 from constant import *
 import os
 
+gen_mod = None
+key_type = None
+key_size = None
+key_directory = None
+key_name = None
+
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def get_user_input(message):
     return input(message).strip()
 
+def get_gen_mod():
+    while True:
+        global gen_mod 
+        gen_mod = get_user_input("Voulez vous configurer votre clef en mode 'rapide' ou 'avancé': ")
+        if gen_mod in RULES_GEN_MOD:
+            clear_terminal()
+            print(f"Vous avez choisi une configuration {gen_mod}")
+            return gen_mod
+        else:
+            print("Mode non conforme, veuillez entrer 'rapide' ou 'avancé'")
+    
 def get_key_type():
     while True:
         global key_type
+        print("Les differents types de clé sont : 'rsa', 'dsa', 'ecdsa' et 'eddsa'") 
         key_type = get_user_input("Quel type de clé souhaitez-vous utiliser ? : ")
         if key_type in RULES_KEY_TYPE:
             clear_terminal()
             print(f"Vous avez choisi le type de clé '{key_type}'")
             return key_type
         else:
-            print("Type de clé non valide. Veuillez entrer 'rsa', 'dsa', 'ecdsa' ou 'eddsa'.")
+            print("Type de clé non valide. Veuillez entrer 'rsa', 'dsa', 'ecdsa' ou 'eddsa'")
 
 def get_key_size():
     global key_size
     match key_type:
         case 'rsa':   
             while True:
+                print("Vous pouvez encoder vortre clé en 1024b, 2048b, 4096b et 8192b")
                 key_size = get_user_input("En combien de bits voulez-vous encoder votre clé ? : ")
                 if key_size in RULES_RSA_KEY_SIZE:
                     clear_terminal()
@@ -37,6 +56,7 @@ def get_key_size():
         
         case 'ecdsa':
             while True:
+                print("Vous pouvez encoder vortre clé en 256b, 384b et 521b")
                 key_size = get_user_input("En combien de bits voulez-vous encoder votre clé ? : ")
                 if key_size in RULES_ECDSA_KEY_SIZE:
                     clear_terminal()
@@ -68,18 +88,27 @@ def get_key_name():
             print("Nom invalide, évitez les caractères spéciaux tels que : '!', '@', '#', etc.")
 
 def get_key_parameter():
-    get_key_type()
-    get_key_size()
-    get_key_directory()
-    get_key_name()
+    if gen_mod == 'rapide':
+        get_key_name()
+        get_key_directory()
+        
+    elif gen_mod == 'avancé':   
+        get_key_type()
+        get_key_size()
+        get_key_name() 
+        get_key_directory()
 
 def generate_key():
     clear_terminal()
-    if key_size == None:
+    if key_size is None:
         os.system(f"ssh-keygen -t ed25519 -f {key_directory}/{key_name}")  
         os.chdir(key_directory)
         
-    else:
+    elif gen_mod == 'rapide':
+        os.system(f"ssh-keygen -t ed25519 -f {key_directory}/{key_name}")  
+        os.chdir(key_directory)
+        
+    elif gen_mod == 'avancé':
         os.system(f"ssh-keygen -t {key_type} -b {key_size} -f {key_directory}/{key_name}")
         os.chdir(key_directory)
 
