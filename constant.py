@@ -1,3 +1,4 @@
-RULES_KEY_TYPE = ['rsa', 'dsa', 'ecdsa']
-RULES_KEY_SIZE = ['1024', '2048', '4096']
+RULES_KEY_TYPE = ['rsa', 'dsa', 'ecdsa', 'eddsa']
+RULES_RSA_KEY_SIZE = ['1024', '2048', '4096', '8192']
+RULES_ECDSA_KEY_SIZE = ['256', '384', '521']
 RULES_KEY_NAME = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '=', '+', '[', ']', '{', '}', ';', ':', '"', ',', '<', '.', '>', '/', '?', '\'', ']', ' ']
