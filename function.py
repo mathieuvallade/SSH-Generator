@@ -48,7 +48,7 @@ def get_key_size():
                     print(f"Vous avez encodé votre clé en {key_size} bits")
                     return key_size
                 else:
-                    print("Encodage non valide. Veuillez entrer '1024', '2048', '4096' ou '8192'.")
+                    print("Encodage non valide. Veuillez entrer '1024', '2048', '4096' ou '8192'")
 
         case 'dsa':
             key_size = '1024'
@@ -63,7 +63,7 @@ def get_key_size():
                     print(f"Vous avez encodé votre clé en {key_size} bits")
                     return key_size
                 else:
-                    print("Encodage non valide. Veuillez entrer '256', '384' ou '521'.")
+                    print("Encodage non valide. Veuillez entrer '256', '384' ou '521'")
                     
         case 'eddsa': 
             key_size = None
@@ -85,7 +85,7 @@ def get_key_name():
             print(f"Vous avez nommé votre clé : {key_name}")
             return key_name
         else:
-            print("Nom invalide, évitez les caractères spéciaux tels que : '!', '@', '#', etc.")
+            print("Nom invalide, évitez les caractères spéciaux tels que : '!', '@', '#', etc")
 
 def get_key_parameter():
     if gen_mod == 'rapide':
