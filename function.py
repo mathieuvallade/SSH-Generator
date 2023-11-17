@@ -101,11 +101,7 @@ def get_key_parameter():
 
 def generate_key():
     clear_terminal()
-    if key_size is None:
-        os.system(f"ssh-keygen -t ed25519 -f {key_directory}/{key_name}")  
-        os.chdir(key_directory)
-        
-    elif gen_mod == 'rapide':
+    if key_size is None or gen_mod == 'rapide':
         os.system(f"ssh-keygen -t ed25519 -f {key_directory}/{key_name}")  
         os.chdir(key_directory)
         
